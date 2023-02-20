@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
 
 html {
     margin: 0 auto;
-    max-width: 800px;
+    max-width: 1200px;
     font-size: 16px;
     box-sizing: border-box;
     background-color: black;
@@ -12,19 +13,46 @@ html {
 #textsToTypeContainer {
     background-color: white;
     color: black;
-    padding: 10px;
+    padding: 15px 15px 5px 15px;
+    font-family: 'Mukta', sans-serif;
+    font-size: 1.2rem;
 }
 
 .paragraph {
-    
+    margin: 0 0 10px 0;
+    /* margin-bottom: 10px; */
 }
 
-h1, #rulesSubheading, #textsToTypeSubheading {
+h1, #rulesSubheading, #textsToTypeSubheading, #inputAndTimerContainer {
     text-align: center;
     font-family: 'Press Start 2P', cursive;
 }
 
+h1 {
+    font-size: 3rem;
+}
+
 #rulesText {
-    max-width: 700px;
+    max-width: 1100px;
     margin: 0 auto;
+    font-family: 'Mukta', sans-serif;
+    font-size: 1.2rem;
+}
+
+input, #timerSpan {
+    font-size: 3rem;
+    max-width: 400px;
+}
+
+#resultsPopup {
+    display: none;
+}
+
+#inputAndTimerContainer {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    max-width: 550px;
+    margin: 10px auto;
+
 }
