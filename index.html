@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="styles.css" rel="stysheet" type="text/css">
+    <script src="script.js" defer></script>
+    <title>Pro-To-Type Typing Speed Game</title>
+</head>
+<body>
+    <main>
+        <h1>Pro-To-Type</h1>
+        <div>
+            <h2>Rules</h2>
+            <p>Test your typing speed below! Once you start typing the timer begins. Be careful, because once you press space you can no longer edit the word. Words spelled correctly will turn green, incorrect words will turn red. It'll take a Pro-To-Type this correctly!!!</p>
+        </div>
+        <div id="textsToTypeContainer">
+            <p id="firstParagraph">First paragraph</p>
+            <p id="secondParagraph">Second paragraph</p>
+            <p id="thirdParagraph">Third paragraph</p>
+            <p id="fourthParagraph">Fourth paragraph</p>
+        </div>
+        <label for="textInput">Type your word in here: </label>
+        <input type="text" id="textInput">
+        <span id="timerSpan">60</span>
+        <div id="resultsPopup">
+            <h2>RESULTS:</h2>to
+            <div id="wordsPerMinutesContainer">
+                <h3>Words per minute: </h3>
+                <p id="wordsPerMinuteResult">Test</p>
+            </div>
+            <div id="typingAccuracyContainer">
+                <h3>Accuracy: </h3>
+                <p id="accuracyResult">Test</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
