@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+html {
+    margin: 0 auto;
+    max-width: 800px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: black;
+    color: white;
+}
+
+#textsToTypeContainer {
+    background-color: white;
+    color: black;
+    padding: 10px;
+}
+
+.paragraph {
+    
+}
+
+h1, #rulesSubheading, #textsToTypeSubheading {
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+}
+
+#rulesText {
+    max-width: 700px;
+    margin: 0 auto;
+}
