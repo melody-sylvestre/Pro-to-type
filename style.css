@@ -20,13 +20,17 @@ html {
     max-height: 450px
 }
 
+
 .textParagraph, #scrollDownText {
     margin: 0;
 }
 
-#resultsPopup, #wordsPerMinuteContainer, #typingAccuracyContainer {
+#resultsPopup,
+#wordsPerMinuteContainer,
+#typingAccuracyContainer {
     margin: 0 auto;
 }
+
 
 
 h1, h2, #inputAndTimerContainer {
@@ -45,7 +49,8 @@ h1 {
     font-size: 2.5rem;
 }
 
-input, #timerSpan {
+input,
+#timerSpan {
     font-size: 3rem;
     max-width: 400px;
     margin: 15px;
@@ -62,11 +67,11 @@ input, #timerSpan {
     margin: 30px auto;
 }
 
-#wordsPerMinuteContainer, #typingAccuracyContainer {
+#wordsPerMinuteContainer,
+#typingAccuracyContainer {
     display: inline-block;
     text-align: center;
     font-size: 2rem;
-
 }
 
 #results {
@@ -83,12 +88,14 @@ input, #timerSpan {
     margin: 10px auto;
 }
 
-a, a:visited {
+a,
+a:visited {
     text-decoration: none;
     font-size: 2.5rem;
     color: white;
     font-weight: bolder;
 }
+
 
 .linkToRules, .linkToGame {
     text-align: center;
@@ -107,4 +114,8 @@ a, a:visited {
 #scrollDownText {
     font-size: 1.8rem;
     text-align: center;
+}
+
+.textInput {
+    display: none;
 }
