@@ -20,7 +20,7 @@ html {
     max-height: 450px
 }
 
-.paragraph, #scrollDownText {
+.textParagraph, #scrollDownText {
     margin: 0;
 }
 
@@ -29,7 +29,7 @@ html {
 }
 
 
-h1, h2, #rulesSubheading, #textsToTypeSubheading, #inputAndTimerContainer {
+h1, h2, #inputAndTimerContainer {
     text-align: center;
     font-family: 'Press Start 2P', cursive;
     font-size: 3rem;
@@ -55,6 +55,7 @@ input, #timerSpan {
     background-color: #FF4fa7;
     padding: 30px;
     max-width: 600px;
+    display: none;
 }
 
 #resultsSubheading {
@@ -89,7 +90,7 @@ a, a:visited {
     font-weight: bolder;
 }
 
-.buttonContainer1, .buttonContainer2 {
+.linkToRules, .linkToGame {
     text-align: center;
     background-color: black;
     border: 5px solid #FF4fa7;
@@ -99,7 +100,7 @@ a, a:visited {
     border-radius: 25px;
 }
 
-.buttonContainer2 {
+.linkToRules {
     max-width: 250px;
 }
 
