@@ -5,20 +5,24 @@ fetch('https://flipsum-ipsum.net/api/icw/v1/generate?ipsum=recipe-ipsum-text-gen
     return response.json()
 }).then((data) => {
     data.forEach((textOutput) => {
-        paragraphs.push(textOutput.split(' '))
+        //the line below replaces any accented character by the matching non-accented character
+        //e.g. "é" becomes "e"
+        textOutput = textOutput.normalize("NFD").replace(/\p{Diacritic}/gu, "")
+        paragraphWordsArray =  textOutput.split(' ')
+        paragraphs.push(paragraphWordsArray)
     }) 
     
     const referenceTextArray = paragraphs[0].concat(paragraphs[1], paragraphs[2], paragraphs[3]) // for use in future stories
     let count = 0
     paragraphs.forEach((paragraph, indexParagraph) => {
-        let stringToPrint = '<p id="paragraph' + indexParagraph + '">'
+        let stringForHtml = '<p class="textParagraph" id="paragraph' + indexParagraph + '">'
         
         paragraph.forEach((word) => {
-            stringToPrint = stringToPrint + '<span id="' + count + '"> ' + word + ' </span>'
+            stringForHtml = stringForHtml + '<span id="' + count + '"> ' + word + ' </span>'
             count++
         })
-        stringToPrint += '</p>'
-        textsToCopyContainer.innerHTML += stringToPrint
+        stringForHtml += '</p>'
+        textsToCopyContainer.innerHTML += stringForHtml
     })
 })
 
