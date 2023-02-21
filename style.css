@@ -20,8 +20,8 @@ html {
     max-height: 450px
 }
 
-
-.textParagraph, #scrollDownText {
+.paragraph,
+#scrollDownText {
     margin: 0;
 }
 
@@ -32,8 +32,11 @@ html {
 }
 
 
-
-h1, h2, #inputAndTimerContainer {
+h1,
+h2,
+#rulesSubheading,
+#textsToTypeSubheading,
+#inputAndTimerContainer {
     text-align: center;
     font-family: 'Press Start 2P', cursive;
     font-size: 3rem;
@@ -60,7 +63,6 @@ input,
     background-color: #FF4fa7;
     padding: 30px;
     max-width: 600px;
-    display: none;
 }
 
 #resultsSubheading {
@@ -96,8 +98,8 @@ a:visited {
     font-weight: bolder;
 }
 
-
-.linkToRules, .linkToGame {
+.linkToRules,
+.linkToGame {
     text-align: center;
     background-color: black;
     border: 5px solid #FF4fa7;
@@ -114,8 +116,4 @@ a:visited {
 #scrollDownText {
     font-size: 1.8rem;
     text-align: center;
-}
-
-.textInput {
-    display: none;
 }
