@@ -20,16 +20,23 @@ html {
     max-height: 450px
 }
 
-.paragraph, #scrollDownText {
+.paragraph,
+#scrollDownText {
     margin: 0;
 }
 
-#resultsPopup, #wordsPerMinuteContainer, #typingAccuracyContainer {
+#resultsPopup,
+#wordsPerMinuteContainer,
+#typingAccuracyContainer {
     margin: 0 auto;
 }
 
 
-h1, h2, #rulesSubheading, #textsToTypeSubheading, #inputAndTimerContainer {
+h1,
+h2,
+#rulesSubheading,
+#textsToTypeSubheading,
+#inputAndTimerContainer {
     text-align: center;
     font-family: 'Press Start 2P', cursive;
     font-size: 3rem;
@@ -45,7 +52,8 @@ h1 {
     font-size: 2.5rem;
 }
 
-input, #timerSpan {
+input,
+#timerSpan {
     font-size: 3rem;
     max-width: 400px;
     margin: 15px;
@@ -61,11 +69,11 @@ input, #timerSpan {
     margin: 30px auto;
 }
 
-#wordsPerMinuteContainer, #typingAccuracyContainer {
+#wordsPerMinuteContainer,
+#typingAccuracyContainer {
     display: inline-block;
     text-align: center;
     font-size: 2rem;
-
 }
 
 #results {
@@ -82,14 +90,16 @@ input, #timerSpan {
     margin: 10px auto;
 }
 
-a, a:visited {
+a,
+a:visited {
     text-decoration: none;
     font-size: 2.5rem;
     color: white;
     font-weight: bolder;
 }
 
-.buttonContainer1, .buttonContainer2 {
+.buttonContainer1,
+.buttonContainer2 {
     text-align: center;
     background-color: black;
     border: 5px solid #FF4fa7;
@@ -106,4 +116,8 @@ a, a:visited {
 #scrollDownText {
     font-size: 1.8rem;
     text-align: center;
+}
+
+.textInput {
+    display: none;
 }
