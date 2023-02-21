@@ -1,4 +1,4 @@
-const textsToCopyContainer = document.querySelector('#textsToCopyContainer')
+const textsToCopyContainer = document.querySelector('#textsToTypeContainer')
 const paragraphs = []
 
 fetch('https://flipsum-ipsum.net/api/icw/v1/generate?ipsum=recipe-ipsum-text-generator&start_with_fixed=0&paragraphs=4').then((response) => {
