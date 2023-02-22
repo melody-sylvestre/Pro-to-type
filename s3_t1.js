@@ -26,12 +26,25 @@ fetch('https://flipsum-ipsum.net/api/icw/v1/generate?ipsum=recipe-ipsum-text-gen
     })
 })
 
-let count = -1
+let wordIndexCount = -1
 let numberValidWords = 0
 
-document.addEventListener('keyup', event => {
+const textInput = document.querySelector('#textInput')
+
+textInput.addEventListener('keyup', event => {
     if (event.code === 'Space') {
       console.log('Space pressed')
+      wordIndexCount++
+      console.log("wordIndexCount: " + wordIndexCount) //debug ref
+    //wordToChange = document.querySelector("#"+wordIndexCount)
+      if(wordFromPlayer.value === referenceArray[wordIndexCount]) {
+        numberValidWords++ // for later use
+        wordFromPlayer.value = ''
+        // wordToChange.ClassList.add("valid") 
+      } else{
+        wordFromPlayer.value = ''
+        // wordToChange.ClassList.add("invalid")
+      }
     }
 })
 
@@ -42,7 +55,6 @@ document.addEventListener('keyup', event => {
 //      if(wordIsValid){
  //         numberValidWords++} // for later                 
 //      wordFromPlayer.value = ''
-        
         // wordToChange = document.querySelector("#"+count)
         // wordToChange.ClassList.add("valid")    
 //}
