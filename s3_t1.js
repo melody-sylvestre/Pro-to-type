@@ -24,29 +24,32 @@ fetch('https://flipsum-ipsum.net/api/icw/v1/generate?ipsum=recipe-ipsum-text-gen
         stringForHtml += '</p>'
         textsToCopyContainer.innerHTML += stringForHtml
     })
-})
 
-let wordIndexCount = -1
-let numberValidWords = 0
+    let wordIndexCount = -1
+    let numberValidWords = 0
 
-const textInput = document.querySelector('#textInput')
+    const textInput = document.querySelector('#textInput')
 
-textInput.addEventListener('keyup', event => {
-    if (event.code === 'Space') {
-      console.log('Space pressed')
-      wordIndexCount++
-      console.log("wordIndexCount: " + wordIndexCount) //debug ref
-    //wordToChange = document.querySelector("#"+wordIndexCount)
-      if(wordFromPlayer.value === referenceArray[wordIndexCount]) {
-        numberValidWords++ // for later use
-        wordFromPlayer.value = ''
+    textInput.addEventListener('keyup', event => {
+        if(event.code === 'Space') {
+            console.log('Space pressed')
+            wordIndexCount++
+            console.log("wordIndexCount: " + wordIndexCount) //debug ref
+        //wordToChange = document.querySelector("#"+wordIndexCount)
+            if(textInput.value === referenceTextArray[wordIndexCount]) {
+                numberValidWords++ // for later use
+                textInput.value = ''
         // wordToChange.ClassList.add("valid") 
-      } else{
-        wordFromPlayer.value = ''
+            } else{
+                textInput.value = ''
         // wordToChange.ClassList.add("invalid")
-      }
-    }
+            }
+        }
 })
+
+})
+
+
 
 // event listener for space bar { 
 //      count++
