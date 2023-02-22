@@ -1,4 +1,4 @@
-const textsToCopyContainer = document.querySelector('#textsToTypeContainer')
+const textToTypeContainer = document.querySelector('#textToTypeContainer')
 const paragraphs = []
 
 fetch('https://flipsum-ipsum.net/api/icw/v1/generate?ipsum=recipe-ipsum-text-generator&start_with_fixed=0&paragraphs=4').then((response) => {
@@ -12,18 +12,15 @@ fetch('https://flipsum-ipsum.net/api/icw/v1/generate?ipsum=recipe-ipsum-text-gen
         paragraphs.push(paragraphWordsArray)
     }) 
     
-    const referenceTextArray = paragraphs[0].concat(paragraphs[1], paragraphs[2], paragraphs[3]) // for use in future stories
+    const referenceTextArray = paragraphs[0].concat(paragraphs[1], paragraphs[2], paragraphs[3])
     let count = 0
-    paragraphs.forEach((paragraph, indexParagraph) => {
-        let stringForHtml = '<p class="textParagraph" id="paragraph' + indexParagraph + '">'
-        
-        paragraph.forEach((word) => {
-            stringForHtml = stringForHtml + '<span id="' + count + '"> ' + word + ' </span>'
-            count++
-        })
-        stringForHtml += '</p>'
-        textsToCopyContainer.innerHTML += stringForHtml
+    let stringForHtml = '<p class="textParagraph">'
+    referenceTextArray.forEach((word) => {
+        stringForHtml = stringForHtml + '<span id="' + count + '"> ' + word + ' </span>'
+        count++
     })
+    stringForHtml += '</p>'
+    textToTypeContainer.innerHTML += stringForHtml
 })
 
 
