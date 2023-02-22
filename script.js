@@ -22,8 +22,9 @@ fetch('https://flipsum-ipsum.net/api/icw/v1/generate?ipsum=recipe-ipsum-text-gen
     textToTypeContainer.innerHTML += stringForHtml
 })
 
+let wordIsValid = false
 let wordIndexCount = -1
-let numberValidWords = 0
+let numberOfValidWords = 0
 
 let textInput = document.querySelector('#textInput')
 
@@ -35,17 +36,13 @@ textInput.addEventListener('keyup', event => {
         wordIsValid = (textValueWithoutSpace === referenceTextArray[wordIndexCount])
 
         if(wordIsValid) {
-            numberValidWords++ // for later use
+            numberOfValidWords++ // for later use
             textInput.value = ''
         } else{
             textInput.value = ''
         }
-        
-        console.log("Word index: "+ wordIndexCount)
-        console.log("Number of valid words: "+ numberValidWords)
     }
 })
-
 
 
 
