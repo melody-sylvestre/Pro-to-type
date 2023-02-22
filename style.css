@@ -11,13 +11,20 @@ html {
     font-family: 'Mukta', sans-serif;
 }
 
-#textsToTypeContainer {
+#textToTypeContainer {
     background-color: white;
     color: black;
     border: 60px solid white;
     font-size: 3.4rem;
     overflow: auto;
-    max-height: 450px
+    max-height: 450px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow-y: scroll;
+}
+
+#textToTypeContainer::-webkit-scrollbar {
+    display: none;
 }
 
 .paragraph,
@@ -50,6 +57,7 @@ h1 {
     max-width: 1100px;
     margin: 40px auto;
     font-size: 2.5rem;
+    text-align: center;
 }
 
 input,
@@ -118,6 +126,6 @@ a:visited {
     text-align: center;
 }
 
-.hidden_label_text_input {
+.hiddenLabelTextInput {
     display: none;
 }
