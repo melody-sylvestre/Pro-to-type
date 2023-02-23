@@ -93,8 +93,9 @@ textInput.addEventListener('keyup', () => {
     }, 1000)
     const countdownForInput = setTimeout(() => {
         document.querySelector("#resultsPopup").style.display = 'block'
+        scrollPixels = 0
         document.getElementById("textToTypeContainer").scroll({
-            top: scrollPixels = 0,
+            top: scrollPixels,
             behavior: 'smooth'
         })
         
