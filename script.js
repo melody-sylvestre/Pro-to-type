@@ -44,7 +44,7 @@ textInput.addEventListener('keyup', event => {
         wordIndexCount++
         wordIsValid = (textValueWithoutSpace === referenceTextArray[wordIndexCount])
 
-        let wordJustFinished = document.getElementById("word-"+wordIndexCount)
+        let wordJustFinished = document.getElementById("word-" + wordIndexCount)
         if (wordIsValid) {
             numberOfValidWords++ // for later use
             wordJustFinished.style.color = validWordColour
