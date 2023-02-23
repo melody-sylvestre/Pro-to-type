@@ -75,5 +75,24 @@ textInput.addEventListener('keyup', event => {
     }
 })
 
+const timer = document.querySelector("#timerSpan")
+const resultsPopup = document.querySelector("#resultsPopup")
+let countdown = 59
+const once = {  //option for addEventListener
+    once: true
+}
+
+textInput.addEventListener('keyup', () => {
+    const countdownForDisplay = setInterval(()=>{
+        timer.innerHTML = countdown
+        countdown--
+    }, 1000)
+    const countdownForInput = setTimeout(() => {
+        textInput.disabled = true
+        timer.innerHTML = 0
+        clearInterval(countdownForDisplay)
+        }, 60000)
+}, once)
+
 
 
