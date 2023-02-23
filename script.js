@@ -29,7 +29,7 @@ fetch('https://flipsum-ipsum.net/api/icw/v1/generate?ipsum=recipe-ipsum-text-gen
     textToTypeContainer.innerHTML += stringForHtml
     let upcomingWord = document.getElementById(0)
     upcomingWord.style.color = ("orange")
-    upcomingWordLength = document.getElementById(0).clientWidth
+    upcomingWordLength = upcomingWord.clientWidth
     totalLengthOfWords += upcomingWordLength
 })
 
@@ -54,15 +54,16 @@ textInput.addEventListener('keyup', event => {
 
         let upcomingWord = document.getElementById(wordIndexCount + 1)
         
-        upcomingWordLength = document.getElementById(wordIndexCount + 1).clientWidth //again, not sure how well named this is
+        upcomingWordLength = document.getElementById(wordIndexCount + 1).clientWidth 
         totalLengthOfWords += upcomingWordLength
 
-        if (totalLengthOfWords >= 864.1) {
-            
+        let textParagraphLength = document.querySelector(".textParagraph").clientWidth
+        if (totalLengthOfWords >= textParagraphLength) {
+            let lineHeight = upcomingWord.clientHeight
             totalLengthOfWords = 0
             totalLengthOfWords += upcomingWordLength
-            document.getElementById("textToTypeContainer").scroll({
-                top: scrollPixels += 90.75,
+            textToTypeContainer.scroll({
+                top: scrollPixels += lineHeight,
                 behavior: 'smooth'
             })
         
