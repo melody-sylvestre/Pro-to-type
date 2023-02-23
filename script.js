@@ -1,5 +1,4 @@
 const textToTypeContainer = document.querySelector('#textToTypeContainer')
-
 let textInput = document.querySelector('#textInput')
 let referenceTextArray = []
 let wordIsValid = false
@@ -11,7 +10,8 @@ let upcomingWordLength = 0
 const validWordColour = "green"
 const invalidWordColour = "red"
 const upcomingWordColour = "#cc7a00"
-
+let totalAttemptedWords = 0
+let wordsPerMinute = 0
 
 fetch('https://flipsum-ipsum.net/api/icw/v1/generate?ipsum=recipe-ipsum-text-generator&start_with_fixed=0&paragraphs=4').then((response) => {
     return response.json()
@@ -73,16 +73,8 @@ textInput.addEventListener('keyup', event => {
 
         }
         upcomingWord.style.color = upcomingWordColour
-
-
-        const wordsPerMinuteResult = document.querySelector('#wordsPerMinuteResult')
-        const accuracyResult = document.querySelector('#accuracyResult')
-
-        let totalAttemptedWords = wordIndexCount + 1
-        let wordsPerMinute = numberOfValidWords
-        let accuracy = Math.round((wordsPerMinute / totalAttemptedWords) * 100) + '%'
-        wordsPerMinuteResult.innerHTML = wordsPerMinute
-        accuracyResult.innerHTML = accuracy
+        totalAttemptedWords = wordIndexCount + 1
+        wordsPerMinute = numberOfValidWords
     }
 })
 
@@ -100,12 +92,17 @@ textInput.addEventListener('keyup', () => {
         countdown--
     }, 1000)
     const countdownForInput = setTimeout(() => {
-
         document.querySelector("#resultsPopup").style.display = 'block'
         document.getElementById("textToTypeContainer").scroll({
             top: scrollPixels = 0,
             behavior: 'smooth'
         })
+        
+        const wordsPerMinuteResult = document.querySelector('#wordsPerMinuteResult')
+        const accuracyResult = document.querySelector('#accuracyResult')
+        let accuracy = Math.round((wordsPerMinute / totalAttemptedWords) * 100) + '%'    
+        wordsPerMinuteResult.innerHTML = wordsPerMinute
+        accuracyResult.innerHTML = accuracy
 
         textInput.disabled = true
         timer.innerHTML = 0
