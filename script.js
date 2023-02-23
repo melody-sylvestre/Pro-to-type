@@ -79,10 +79,6 @@ textInput.addEventListener('keyup', event => {
 
         upcomingWord.style.color = upcomingWordColour
 
-
-        const wordsPerMinuteResult = document.querySelector('#wordsPerMinuteResult')
-        const accuracyResult = document.querySelector('#accuracyResult')
-
     }
 })
 
@@ -134,7 +130,9 @@ textInput.addEventListener('keyup', () => {
             top: scrollPixels,
             behavior: 'smooth'
         })
-
+        
+        const wordsPerMinuteResult = document.querySelector('#wordsPerMinuteResult')
+        const accuracyResult = document.querySelector('#accuracyResult')
         let totalAttemptedWords = wordIndexCount + 1
         let wordsPerMinute = numberOfValidWords
         let accuracy = Math.round((wordsPerMinute / totalAttemptedWords) * 100) + '%'
