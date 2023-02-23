@@ -11,6 +11,11 @@ html {
     font-family: 'Mukta', sans-serif;
 }
 
+span {
+    display: inline-block;
+    padding-right: 13px;
+}
+
 #textToTypeContainer {
     background-color: white;
     color: black;
@@ -21,6 +26,10 @@ html {
     -ms-overflow-style: none;
     scrollbar-width: none;
     overflow-y: scroll;
+}
+
+.textParagraph {
+    margin: 0;
 }
 
 #textToTypeContainer::-webkit-scrollbar {
@@ -71,6 +80,7 @@ input,
     background-color: #FF4fa7;
     padding: 30px;
     max-width: 600px;
+    display: none;
 }
 
 #resultsSubheading {
