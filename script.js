@@ -91,18 +91,18 @@ textInput.addEventListener('input', (event) => {
     let typedLetter = textInput.value.slice(-1)
     let letterIndexCount = (textInput.value.length - 1)
     let currentLetter = lettersArray[letterIndexCount]
-
-
-    if (typedLetter === currentLetter) {
-        wordForLetterStyling.style.color = validWordColour
-        letterIndexCount++
-        console.log("correct")
-    } else {
-        wordForLetterStyling.style.color = invalidWordColour
-        letterIndexCount++
-        console.log('incorrect!')
+    
+    if(typedLetter == ' ') {
+        return
     }
-    console.log(letterIndexCount)
+
+        if (typedLetter === currentLetter) {
+            wordForLetterStyling.style.color = validWordColour
+            letterIndexCount++
+        } else {
+            wordForLetterStyling.style.color = invalidWordColour
+            letterIndexCount++
+        }
 
     if (textInput.value === '') {
         wordForLetterStyling.style.color = upcomingWordColour
@@ -130,7 +130,7 @@ textInput.addEventListener('keyup', () => {
             top: scrollPixels,
             behavior: 'smooth'
         })
-        
+
         const wordsPerMinuteResult = document.querySelector('#wordsPerMinuteResult')
         const accuracyResult = document.querySelector('#accuracyResult')
         let totalAttemptedWords = wordIndexCount + 1
