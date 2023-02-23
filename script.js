@@ -11,6 +11,8 @@ let upcomingWordLength = 0
 const validWordColour = "green"
 const invalidWordColour = "red"
 const upcomingWordColour = "#cc7a00"
+let totalAttemptedWords = 0
+let wordsPerMinute = 0
 
 
 fetch('https://flipsum-ipsum.net/api/icw/v1/generate?ipsum=recipe-ipsum-text-generator&start_with_fixed=0&paragraphs=4').then((response) => {
@@ -81,12 +83,6 @@ textInput.addEventListener('keyup', event => {
         const wordsPerMinuteResult = document.querySelector('#wordsPerMinuteResult')
         const accuracyResult = document.querySelector('#accuracyResult')
 
-        let totalAttemptedWords = wordIndexCount + 1
-        let wordsPerMinute = numberOfValidWords
-        let accuracy = Math.round((wordsPerMinute / totalAttemptedWords) * 100) + '%'
-        wordsPerMinuteResult.innerHTML = wordsPerMinute
-        accuracyResult.innerHTML = accuracy
-
     }
 })
 
@@ -133,14 +129,22 @@ textInput.addEventListener('keyup', () => {
     const countdownForInput = setTimeout(() => {
 
         document.querySelector("#resultsPopup").style.display = 'block'
+        let scrollPixels = 0
         document.getElementById("textToTypeContainer").scroll({
-            top: scrollPixels = 0,
+            top: scrollPixels,
             behavior: 'smooth'
         })
+
+        let totalAttemptedWords = wordIndexCount + 1
+        let wordsPerMinute = numberOfValidWords
+        let accuracy = Math.round((wordsPerMinute / totalAttemptedWords) * 100) + '%'
+        wordsPerMinuteResult.innerHTML = wordsPerMinute
+        accuracyResult.innerHTML = accuracy
 
         textInput.disabled = true
         timer.innerHTML = 0
         clearInterval(countdownForDisplay)
+
     }, 60000)
 }, once)
 
