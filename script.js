@@ -1,4 +1,5 @@
 const textToTypeContainer = document.querySelector('#textToTypeContainer')
+
 let textInput = document.querySelector('#textInput')
 let referenceTextArray = []
 let wordIsValid = false
@@ -10,8 +11,7 @@ let upcomingWordLength = 0
 const validWordColour = "green"
 const invalidWordColour = "red"
 const upcomingWordColour = "#cc7a00"
-let totalAttemptedWords = 0
-let wordsPerMinute = 0
+
 
 fetch('https://flipsum-ipsum.net/api/icw/v1/generate?ipsum=recipe-ipsum-text-generator&start_with_fixed=0&paragraphs=4').then((response) => {
     return response.json()
@@ -40,13 +40,15 @@ fetch('https://flipsum-ipsum.net/api/icw/v1/generate?ipsum=recipe-ipsum-text-gen
 
 
 textInput.addEventListener('keyup', event => {
+    let textValue = textInput.value
+    let textValueWithoutSpace = textValue.slice(0, textValue.length - 1)
+
     if (event.code === 'Space') {
-        let textValue = textInput.value
-        let textValueWithoutSpace = textValue.slice(0, textValue.length - 1)
+
         wordIndexCount++
         wordIsValid = (textValueWithoutSpace === referenceTextArray[wordIndexCount])
-
         let wordJustFinished = document.getElementById("word-" + wordIndexCount)
+
         if (wordIsValid) {
             numberOfValidWords++
             wordJustFinished.style.color = validWordColour
@@ -72,12 +74,49 @@ textInput.addEventListener('keyup', event => {
             })
 
         }
+
         upcomingWord.style.color = upcomingWordColour
-        totalAttemptedWords = wordIndexCount + 1
-        wordsPerMinute = numberOfValidWords
+
+
+        const wordsPerMinuteResult = document.querySelector('#wordsPerMinuteResult')
+        const accuracyResult = document.querySelector('#accuracyResult')
+
+        let totalAttemptedWords = wordIndexCount + 1
+        let wordsPerMinute = numberOfValidWords
+        let accuracy = Math.round((wordsPerMinute / totalAttemptedWords) * 100) + '%'
+        wordsPerMinuteResult.innerHTML = wordsPerMinute
+        accuracyResult.innerHTML = accuracy
+
     }
 })
 
+textInput.addEventListener('input', (event) => {
+
+    let currentWordForLetterCheck = document.getElementById("word-" + (wordIndexCount + 1)).textContent
+    let currentWordForLetterCheckNoSpaces = currentWordForLetterCheck.substring(1, currentWordForLetterCheck.length - 1)
+    let lettersArray = currentWordForLetterCheckNoSpaces.split('')
+    let wordForLetterStyling = document.getElementById("word-" + (wordIndexCount + 1))
+    let typedLetter = textInput.value.slice(-1)
+    let letterIndexCount = (textInput.value.length - 1)
+    let currentLetter = lettersArray[letterIndexCount]
+
+
+    if (typedLetter === currentLetter) {
+        wordForLetterStyling.style.color = validWordColour
+        letterIndexCount++
+        console.log("correct")
+    } else {
+        wordForLetterStyling.style.color = invalidWordColour
+        letterIndexCount++
+        console.log('incorrect!')
+    }
+    console.log(letterIndexCount)
+
+    if (textInput.value === '') {
+        wordForLetterStyling.style.color = upcomingWordColour
+    }
+
+})
 
 const timer = document.querySelector("#timerSpan")
 const resultsPopup = document.querySelector("#resultsPopup")
@@ -92,18 +131,12 @@ textInput.addEventListener('keyup', () => {
         countdown--
     }, 1000)
     const countdownForInput = setTimeout(() => {
+
         document.querySelector("#resultsPopup").style.display = 'block'
-        scrollPixels = 0
         document.getElementById("textToTypeContainer").scroll({
-            top: scrollPixels,
+            top: scrollPixels = 0,
             behavior: 'smooth'
         })
-        
-        const wordsPerMinuteResult = document.querySelector('#wordsPerMinuteResult')
-        const accuracyResult = document.querySelector('#accuracyResult')
-        let accuracy = Math.round((wordsPerMinute / totalAttemptedWords) * 100) + '%'    
-        wordsPerMinuteResult.innerHTML = wordsPerMinute
-        accuracyResult.innerHTML = accuracy
 
         textInput.disabled = true
         timer.innerHTML = 0
