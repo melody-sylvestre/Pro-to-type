@@ -85,7 +85,7 @@ const once = {  //option for addEventListener
 textInput.addEventListener('keyup', () => {
     const countdownForDisplay = setInterval(()=>{
         timer.innerHTML = countdown
-        countdown--
+        countdown --
     }, 1000)
     const countdownForInput = setTimeout(() => {
         textInput.disabled = true
