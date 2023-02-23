@@ -9,7 +9,9 @@ let totalLengthOfWords = 0
 let upcomingWordLength = 0
 const validWordColour = "green"
 const invalidWordColour = "red"
-const upcomingWordColour = "#cc7a00" // that's a dark orange colour 
+const upcomingWordColour = "#cc7a00"
+let totalAttemptedWords = 0
+let wordsPerMinute = 0
 
 fetch('https://flipsum-ipsum.net/api/icw/v1/generate?ipsum=recipe-ipsum-text-generator&start_with_fixed=0&paragraphs=4').then((response) => {
     return response.json()
@@ -46,7 +48,7 @@ textInput.addEventListener('keyup', event => {
 
         let wordJustFinished = document.getElementById("word-" + wordIndexCount)
         if (wordIsValid) {
-            numberOfValidWords++ // for later use
+            numberOfValidWords++
             wordJustFinished.style.color = validWordColour
         } else {
             wordJustFinished.style.color = invalidWordColour
@@ -55,8 +57,8 @@ textInput.addEventListener('keyup', event => {
 
         let upcomingWordIndex = wordIndexCount + 1
         let upcomingWord = document.getElementById("word-" + upcomingWordIndex)
-        
-        upcomingWordLength = upcomingWord.clientWidth 
+
+        upcomingWordLength = upcomingWord.clientWidth
         totalLengthOfWords += upcomingWordLength
 
         let textParagraphLength = document.querySelector(".textParagraph").clientWidth
@@ -68,12 +70,47 @@ textInput.addEventListener('keyup', event => {
                 top: scrollPixels += lineHeight,
                 behavior: 'smooth'
             })
-        
+
         }
         upcomingWord.style.color = upcomingWordColour
-
+        totalAttemptedWords = wordIndexCount + 1
+        wordsPerMinute = numberOfValidWords
     }
 })
+
+
+const timer = document.querySelector("#timerSpan")
+const resultsPopup = document.querySelector("#resultsPopup")
+let countdown = 59
+const once = {
+    once: true
+}
+
+textInput.addEventListener('keyup', () => {
+    const countdownForDisplay = setInterval(() => {
+        timer.innerHTML = countdown
+        countdown--
+    }, 1000)
+    const countdownForInput = setTimeout(() => {
+        document.querySelector("#resultsPopup").style.display = 'block'
+        scrollPixels = 0
+        document.getElementById("textToTypeContainer").scroll({
+            top: scrollPixels,
+            behavior: 'smooth'
+        })
+        
+        const wordsPerMinuteResult = document.querySelector('#wordsPerMinuteResult')
+        const accuracyResult = document.querySelector('#accuracyResult')
+        let accuracy = Math.round((wordsPerMinute / totalAttemptedWords) * 100) + '%'    
+        wordsPerMinuteResult.innerHTML = wordsPerMinute
+        accuracyResult.innerHTML = accuracy
+
+        textInput.disabled = true
+        timer.innerHTML = 0
+        clearInterval(countdownForDisplay)
+    }, 60000)
+}, once)
+
 
 
 
