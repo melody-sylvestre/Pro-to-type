@@ -28,7 +28,7 @@ fetch('https://flipsum-ipsum.net/api/icw/v1/generate?ipsum=recipe-ipsum-text-gen
     stringForHtml += '</p>'
     textToTypeContainer.innerHTML += stringForHtml
     let upcomingWord = document.getElementById(0)
-    upcomingWord.style.color = ("orange")
+    upcomingWord.style.color = ("#cc7a00")
     upcomingWordLength = upcomingWord.clientWidth
     totalLengthOfWords += upcomingWordLength
 })
@@ -68,7 +68,7 @@ textInput.addEventListener('keyup', event => {
             })
         
         }
-        upcomingWord.style.color = ("orange")
+        upcomingWord.style.color = ("#cc7a00")
 
     }
 })
