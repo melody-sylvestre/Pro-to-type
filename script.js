@@ -55,8 +55,8 @@ textInput.addEventListener('keyup', event => {
 
         let upcomingWordIndex = wordIndexCount + 1
         let upcomingWord = document.getElementById("word-" + upcomingWordIndex)
-        
-        upcomingWordLength = upcomingWord.clientWidth 
+
+        upcomingWordLength = upcomingWord.clientWidth
         totalLengthOfWords += upcomingWordLength
 
         let textParagraphLength = document.querySelector(".textParagraph").clientWidth
@@ -68,12 +68,39 @@ textInput.addEventListener('keyup', event => {
                 top: scrollPixels += lineHeight,
                 behavior: 'smooth'
             })
-        
+
         }
         upcomingWord.style.color = upcomingWordColour
-
+        
+        // could these consts go at the top?
+        const wordsPerMinuteResult = document.querySelector('#wordsPerMinuteResult')
+        const accuracyResult = document.querySelector('#accuracyResult')
+        let totalAttemptedWords = wordIndexCount + 1
+        let wordsPerMinute = numberOfValidWords
+        let accuracy = Math.round((wordsPerMinute / totalAttemptedWords) * 100) + '%'
+        wordsPerMinuteResult.innerHTML = wordsPerMinute
+        accuracyResult.innerHTML = accuracy
     }
 })
+
+const timeOutReference = setTimeout(() => {
+    document.querySelector('#resultsPopup').style.display = 'block'
+    document.querySelector('#resultsPopup').style.marginBottom = '60px'
+    document.querySelector('#inputAndTimerContainer').style.display = 'none'
+    document.getElementById("textToTypeContainer").scroll({
+        top: scrollPixels = 0,
+        behavior: 'smooth'
+    })
+}, 60000)
+
+
+
+
+
+
+
+
+
 
 
 
