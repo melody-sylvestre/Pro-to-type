@@ -9,6 +9,8 @@ html {
     background-color: black;
     color: white;
     font-family: 'Mukta', sans-serif;
+    height: 100%;
+    padding-top: 35px;
 }
 
 span {
@@ -70,9 +72,6 @@ h1 {
     font-size: 5rem;
     margin-top: 0px;
 }
-main{
-    padding-top: 20px;
-}
 
 
 #rulesText {
@@ -116,7 +115,7 @@ input,
 
 #inputAndTimerContainer {
     display: flex;
-    align-content: center;
+    align-items: center;
     justify-content: space-between;
     max-width: 550px;
     margin: 10px auto;
