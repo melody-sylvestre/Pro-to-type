@@ -1,6 +1,11 @@
 const textToTypeContainer = document.querySelector('#textToTypeContainer')
-
+const timer = document.querySelector("#timerSpan")
 let textInput = document.querySelector('#textInput')
+const resultsPopup = document.querySelector("#resultsPopup")
+let countdown = 59
+const once = {
+    once: true
+}
 let referenceTextArray = []
 let wordIsValid = false
 let wordIndexCount = -1
@@ -13,6 +18,7 @@ const invalidWordColour = "red"
 const upcomingWordColour = "#cc7a00"
 let totalAttemptedWords = 0
 let wordsPerMinute = 0
+let incorrectWord = false
 
 
 fetch('https://flipsum-ipsum.net/api/icw/v1/generate?ipsum=recipe-ipsum-text-generator&start_with_fixed=0&paragraphs=4').then((response) => {
@@ -82,47 +88,37 @@ textInput.addEventListener('keyup', event => {
     }
 })
 
-textInput.addEventListener('input', (event) => {
+textInput.addEventListener('input', () => {
 
     let currentWordForLetterCheck = document.getElementById("word-" + (wordIndexCount + 1)).textContent
     let currentWordForLetterCheckNoSpaces = currentWordForLetterCheck.substring(1, currentWordForLetterCheck.length - 1)
-    let lettersArray = currentWordForLetterCheckNoSpaces.split('')
     let wordForLetterStyling = document.getElementById("word-" + (wordIndexCount + 1))
     let typedLetter = textInput.value.slice(-1)
-    let letterIndexCount = (textInput.value.length - 1)
-    let currentLetter = lettersArray[letterIndexCount]
-    
+    let comparisonString = currentWordForLetterCheckNoSpaces.slice(0, textInput.value.length)
+
     if(typedLetter == ' ') {
         return
     }
 
-        if (typedLetter === currentLetter) {
-            wordForLetterStyling.style.color = validWordColour
-            letterIndexCount++
-        } else {
-            wordForLetterStyling.style.color = invalidWordColour
-            letterIndexCount++
-        }
-
     if (textInput.value === '') {
         wordForLetterStyling.style.color = upcomingWordColour
+        return
     }
 
+    if (textInput.value === comparisonString) {
+        wordForLetterStyling.style.color = validWordColour
+    } else {
+        wordForLetterStyling.style.color = invalidWordColour
+    }
 })
-
-const timer = document.querySelector("#timerSpan")
-const resultsPopup = document.querySelector("#resultsPopup")
-let countdown = 59
-const once = {
-    once: true
-}
 
 textInput.addEventListener('keyup', () => {
     const countdownForDisplay = setInterval(() => {
         timer.innerHTML = countdown
         countdown--
     }, 1000)
-    const countdownForInput = setTimeout(() => {
+    
+    setTimeout(() => {
 
         document.querySelector("#resultsPopup").style.display = 'block'
         scrollPixels = 0
