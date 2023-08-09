@@ -13,7 +13,7 @@ const upcomingWordColour = "#cc7a00"
 let totalAttemptedWords = 0
 let wordsPerMinute = 0
 
-fetch('https://flipsum-ipsum.net/api/icw/v1/generate?ipsum=recipe-ipsum-text-generator&start_with_fixed=0&paragraphs=4').then((response) => {
+fetch('https://power-plugins.com/api/flipsum/ipsum/coffee-shop?paragraphs=4&start_with_fixed=0').then((response) => {
     return response.json()
 }).then((data) => {
     data.forEach((textOutput) => {
